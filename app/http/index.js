@@ -5,6 +5,8 @@ import cors from 'cors';
 import multer from 'multer';
 
 import auth from './auth';
+import {loggedIn} from 'app/auth/filters';
+import teams from './teams';
 
 const app = express();
 
@@ -15,7 +17,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 // parse multipart-form-data
 app.use(multer({
   dest: '/tmp',
-  limits: {fileSize: '50000000'}
+  limits: {fileSize: '500'}
 }).any());
 
 app.use(cors());
@@ -27,8 +29,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/auth', auth);
+app.use(loggedIn);
+app.use('/teams', teams);
 app.get('/', (req, res) => {
-  return res.status(200).send({msg: 'We are up and running'});
+  return res.status(200).send({msg: 'We are up and running. Go and change the world'});
 });
 // catch all route
 app.all('*', (req, res) => {

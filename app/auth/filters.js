@@ -3,7 +3,6 @@ import {check} from './index';
 export async function loggedIn(req, res, next) {
   const authKey = getAuthKeyFromRequest(req);
   const user = await check(authKey);
-  console.log({user});
   if (user !== null) {
     req.user = user;
     req.authKey = authKey;

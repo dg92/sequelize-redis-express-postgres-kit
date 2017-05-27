@@ -2,6 +2,11 @@ import {assign, isArray, toPlainObject} from 'lodash';
 
 import {isUsableObject} from 'app/util';
 
+// new Validator({
+//   ['email'](email) {
+//     return (isEmail(email) && isString(email)) ? null : 'Email is invalid.';
+//   },
+
 export default class Validator {
   constructor(validations=[]) {
     this.validations = new Map();
@@ -13,7 +18,6 @@ export default class Validator {
       validations = toPlainObject(validations);
       validations = Object.keys(validations).map((k) => ({key: k, validation: validations[k]}));
     }
-
     validations.forEach(({key, validation}) => {
       this.validations.set(key, validation);
     });
@@ -36,7 +40,6 @@ export default class Validator {
 
   errors(input={}) {
     const keys = Array.from(this.validations.keys());
-
     return Promise.all(
       keys.map((k) => {
         const validated = this.validations.get(k).bind(this)(input[k], input, k);

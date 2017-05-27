@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "NODE_PATH=. babel-node ./app/server.js",
-    "n:s": "NODE_PATH=. nodemon --exec \"babel-node\" ./app/server.js"
+    "n:s": "NODE_PATH=. nodemon --exec \"babel-node\" ./app/server.js",
+    "task": "NODE_PATH=. babel-node ./app/cli.js"
   },
   "author": "Deepak (ideepak.jsd@gmail.com)",
   "license": "ISC",
