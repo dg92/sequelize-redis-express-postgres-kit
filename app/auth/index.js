@@ -5,7 +5,7 @@ import models from 'app/models';
 
 import {isUsableObject} from 'app/util';
 import config from './config';
-import {cache} from 'redisConnection';
+import cache from 'cache';
 
 const authHash = cache.hash('auth');
 

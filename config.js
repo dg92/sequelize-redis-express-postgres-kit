@@ -2,7 +2,7 @@ export default {
   redis: {
     host: 'localhost',
     port: '6379',
-    password: '23324eacba937c3ff9cab1c64c49713d'
+    password: ''
   },
   auth: {
     lifetime: 2 * 24 * 3600 * 1000

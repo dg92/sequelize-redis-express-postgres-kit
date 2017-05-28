@@ -1,5 +1,5 @@
 import db from 'app/models';
-import {cache} from 'redisConnection';
+import cache from 'cache';
 import tasks from 'app/tasks';
 import {handleAsyncExceptions} from 'app/util';
 
